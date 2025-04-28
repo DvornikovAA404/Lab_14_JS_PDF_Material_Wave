@@ -1,13 +1,24 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме | Лабораторная работа №14</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="resume">
+    <!-- Редактируемые блоки -->
+    <h1 contenteditable="true">Иван Иванов</h1>
+    <div class="section" contenteditable="true">
+      <h2>Опыт работы</h2>
+      <p>Frontend Developer, Компания "Технологии", 2020–2023</p>
+    </div>
+    <!-- Кнопка скачивания -->
+    <button id="downloadBtn" onclick="downloadPDF()">Скачать PDF</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+  <!-- В конец body в index.html -->
+</body>
 </html>

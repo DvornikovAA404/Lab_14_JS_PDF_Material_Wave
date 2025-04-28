@@ -94,3 +94,50 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Material Wave эффект */
+.wave {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Анимация изменений */
+[contenteditable="true"] {
+  transition: all 0.3s ease;
+  padding: 8px;
+}
+
+[contenteditable="true"]:focus {
+  background: #261e1e;
+  outline: none;
+}
+
+/* Стили резюме */
+.resume {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin: 1.5rem 0;
+}
+
+button {
+  background: #646cff;
+  color: white;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+}
