@@ -23,44 +23,26 @@ document.querySelector('#app').innerHTML = `
 
 setupCounter(document.querySelector('#counter'))
 
-// Material Wave
-document.addEventListener('click', (e) => {
-  const target = e.target.closest('[contenteditable="true"], button');
-  if (!target) return;
-
-  const wave = document.createElement('div');
-  wave.className = 'wave';
-  const rect = target.getBoundingClientRect();
-  wave.style.width = wave.style.height = `${Math.max(rect.width, rect.height)}px`;
-  wave.style.left = `${e.clientX - rect.left - rect.width / 2}px`;
-  wave.style.top = `${e.clientY - rect.top - rect.height / 2}px`;
-  target.appendChild(wave);
-  setTimeout(() => wave.remove(), 600);
-});
-
-// Сохранение данных
-document.querySelectorAll('[contenteditable="true"]').forEach(el => {
-  el.addEventListener('input', () => {
-    localStorage.setItem(el.id || 'resumeData', el.innerHTML);
-  });
-  el.innerHTML = localStorage.getItem(el.id || 'resumeData') || el.innerHTML;
-});
-
-document.getElementById('downloadBtn').addEventListener('click', () => {
-  const element = document.querySelector('.resume');
-  if (!element) {
-    console.error('Элемент .resume не найден!');
-    return;
-  }
-
-  const options = {
-    margin: 10,
-    filename: 'resume.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().set(options).from(element).save()
-    .catch(err => console.error('Ошибка генерации PDF:', err));
-});
+function createRipple(event) {
+  const button = event.currentTarget;
+  
+  // Создаем элемент волны
+  const circle = document.createElement('span');
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
+  
+  // Позиционируем относительно кнопки
+  const rect = button.getBoundingClientRect();
+  circle.style.width = circle.style.height = `${diameter}px`;
+  circle.style.left = `${event.clientX - rect.left - radius}px`;
+  circle.style.top = `${event.clientY - rect.top - radius}px`;
+  circle.classList.add('ripple');
+  
+  // Удаляем предыдущие волны
+  const existingRipples = button.querySelectorAll('.ripple');
+  existingRipples.forEach(ripple => ripple.remove());
+  
+  // Добавляем волну и автоматически удаляем после анимации
+  button.appendChild(circle);
+  circle.addEventListener('animationend', () => circle.remove());
+}

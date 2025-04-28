@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Резюме | Лабораторная работа №14</title>
-  <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-  <div class="resume">
-    <!-- Редактируемые блоки -->
-    <h1 contenteditable="true">Иван Иванов</h1>
-    <div class="section" contenteditable="true">
-      <h2>Опыт работы</h2>
-      <p>Frontend Developer, Компания "Технологии", 2020–2023</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Vite App</h2>
+      <h1 contenteditable="true" data-key="name">Иван Иванов</h1>
+      <p contenteditable="true" data-key="phone">Телефон: +7 (123) 456-78-90</p>
+      <p contenteditable="true" data-key="email">Email: ivan@example.com</p>
+      <button id="generateBtn" class="button" onclick="createRipple()">Generate</button>
     </div>
-    <!-- Кнопка скачивания -->
-    <button id="downloadBtn" onclick="downloadPDF()">Скачать PDF</button>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <script src="./js/main.js"></script>
-  <!-- В конец body в index.html -->
-</body>
+    <script src="./js/script.js"></script>
+    <script src="./js/mw.js"></script>
+    <script type="module" src="./js/main.js"></script>
+  </body>
 </html>
